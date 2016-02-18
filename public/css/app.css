@@ -1,45 +1,195 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* apply a natural box layout model to all elements, but allowing components to change */
+
+html {
+    box-sizing: border-box;
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html,
 body {
-  font: 13px Helvetica, Arial;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+span.author {
+  background: white;
+  color: #e74c3c;
+  font-weight: 900;
+  border-radius: 10px;
+  padding: 2px 6px;
+}
+input:focus {
+    border: 2px solid #e74c3c;
 }
 
-form {
-  background: #000;
-  padding: 3px;
+input:focus, button:focus {
+    outline: 0;
+}
+
+div {
+    padding: 0;
+    margin: 0;
+}
+
+.chat-app {
+    height: 100%;
+}
+
+.messages-container {
+    background: #3498db;
+    float: left;
+    position: relative;
+    height: 100%;
+    width: 75%;
+}
+
+.users-container {
+  color: white;
+    float: left;
+    position: relative;
+    width: 25%;
+    height: 100%;
+    background: #2980b9;
+}
+
+.chat-input {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.input {
+    margin: 2px;
+    padding: 10px;
+    color: #555;
+}
+
+.user-list {
+  list-style: none;
+
+}
+.user-list li {
+  margin-bottom: 7px;
+}
+
+.btn {
+    border-radius: 5px;
+    border: none;
+    background-color: #e74c3c;
+    color: #FFF;
+    padding: 10px 5px;
+    box-shadow: 0 4px #c0392b;
+}
+
+
+
+.btn:active {
+    background-color: #c0392b;
+    box-shadow: 0 4px #666;
+    transform: translateY(2px);
+}
+
+.form {
+    margin: 5px;
+}
+
+.form .input-wrapper {
+    display: block;
+    overflow: hidden;
+    padding-right: 5px;
+}
+
+.form input {
+    width: 100%;
+}
+
+.form button {
+    margin: 3px;
+    float: right;
+    width: 60px;
+}
+
+.message-list {
+    list-style-type: none;
+}
+
+.message-list li {
+    padding: 5px 10px;
+}
+
+.message-list li:nth-child(even) {
+    background: #2980b9;
+}
+
+h2 {
+  margin: 10px 15px;
+  color: white;
+}
+
+.modal-mask {
   position: fixed;
-  bottom: 0;
+  z-index: 9998;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
 }
 
-form input {
-  border: 0;
-  padding: 10px;
-  width: 90%;
-  margin-right: .5%;
+.modal-wrapper {
+  display: table-cell;
+  vertical-align: middle;
 }
 
-form button {
-  width: 9%;
-  background: rgb(130, 224, 255);
-  border: none;
-  padding: 10px;
+.modal-container {
+  width: 300px;
+  margin: 0px auto;
+  padding: 20px 30px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
-.messages {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.modal-header h3 {
+  margin-top: 0;
+  color: #e74c3c;
 }
 
-.messages li {
-  padding: 5px 10px;
+.modal-body {
+  margin: 20px 0;
 }
 
-.messages li:nth-child(odd) {
-  background: #eee;
+.modal-default-button {
+  float: right;
+}
+
+/*
+ * the following styles are auto-applied to elements with
+ * v-transition="modal" when their visiblity is toggled
+ * by Vue.js.
+ *
+ * You can easily play with the modal transition by editing
+ * these styles.
+ */
+
+.modal-enter, .modal-leave {
+  opacity: 0;
+}
+
+.modal-enter .modal-container,
+.modal-leave .modal-container {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
