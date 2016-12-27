@@ -25,8 +25,9 @@ var vm = new Vue({
     },
     methods: {
         toggleMenu: function (e) {
-            this.menuVisible = !this.menuVisible;
-            console.log(this.menuVisible);
+            if (window.innerWidth <= 480) {
+                this.menuVisible = !this.menuVisible;
+            }
         },
         addUser: function (e) {
             if (!this.username)
