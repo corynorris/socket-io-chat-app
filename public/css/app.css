@@ -59,6 +59,39 @@ div {
     background: #2980b9;
 }
 
+/* RESPONSIVE ARROWS */
+[class^=arr-]{
+  border:       solid currentColor;
+  border-width: 0 .2em .2em 0;
+  display:      inline-block;
+  padding:      .20em;
+  font-size: 1.2rem;
+}
+/* Additional formatting for arrow icon */
+.arr-left  {transform:rotate(135deg);  -webkit-transform:rotate(135deg);}
+
+.close-menu {
+    margin: 5px 0px 20px 0px;
+    text-align: center;
+    width: 100%;
+}
+
+@media only screen and (max-width : 480px) {
+    .users-container {
+        width: 6%;
+    }
+    .messages-container {
+        width: 94%;
+    } 
+
+    .messages-container.show-users { 
+        width: 70%;
+    }
+    .users-container.show-users { 
+        width: 30%;
+    }
+}
+
 .chat-input {
     position: absolute;
     bottom: 0;
@@ -74,6 +107,8 @@ div {
 
 .user-list {
   list-style: none;
+  margin: 0 0 0 20px;
+  padding: 0;
 
 }
 .user-list li {

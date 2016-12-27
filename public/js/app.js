@@ -20,10 +20,15 @@ var vm = new Vue({
         username: null,
         messages: [],
         users: [],
-        input: ""
+        input: "",
+        menuVisible: true
     },
     methods: {
-        addUser: function(e) {
+        toggleMenu: function (e) {
+            this.menuVisible = !this.menuVisible;
+            console.log(this.menuVisible);
+        },
+        addUser: function (e) {
             if (!this.username)
                 return;
             this.users.push(this.username);
@@ -31,39 +36,39 @@ var vm = new Vue({
             vm.showModal = false;
 
         },
-        sendMessage: function(e) {
-          // Make sure there is input
+        sendMessage: function (e) {
+            // Make sure there is input
             if (!this.input)
                 return;
 
             // Update messages           
             this.messages.push({
-              author: this.username,
-              text: this.input,
+                author: this.username,
+                text: this.input,
             });
 
             socket.emit('send message', this.input);
 
             // Clear input for next message
-            this.input = '';         
+            this.input = '';
         }
     }
 });
 
-socket.on('users', function(users) {
+socket.on('users', function (users) {
     vm.users = users;
 });
 
-socket.on('chat message', function(msg) {
+socket.on('chat message', function (msg) {
     vm.messages.push(msg);
 });
 
-socket.on('user joined', function(username) {
+socket.on('user joined', function (username) {
     vm.users.push(username);
 });
 
 
-socket.on('user left', function(username) {
+socket.on('user left', function (username) {
     var index = vm.users.indexOf(username);
     vm.users.splice(index, 1);
 });

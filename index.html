@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Socket.IO chat</title>
+    <title>Chat</title>
     <link rel="stylesheet" href="/css/app.css" />
 
     <!--[if lt IE 9]>
@@ -22,7 +22,7 @@
             <input slot="body" class="input" v-model="username" @keyup.enter="addUser"></input>
             <button slot="footer" class="btn" @click="addUser">Select</button>
         </modal>
-        <section class="messages-container">
+        <section class="messages-container" v-bind:class="{ 'show-users': menuVisible }">
             <header>
                 <ul class="message-list">
                     <li v-for="message in messages" track-by="$index"><span class="author">{{ message.author }}</span> {{ message.text }}</li>
@@ -37,11 +37,15 @@
                 </form>
             </footer>
         </section>
-        <section id="users" class="users-container">
+        <section v-on:click="toggleMenu" id="users" class="users-container" v-bind:class="{ 'show-users': menuVisible }">
+
             <header>
-                <h2>Users</h2>
+                <h2 v-if="menuVisible">Users</h2>
+                <div class="close-menu" v-if="!menuVisible">
+                    <i class="arr-left"></i>
+                </div>
             </header>
-            <footer>
+            <footer v-if="menuVisible">
                 <ul class="user-list">
                     <li v-for="user in users" track-by="$index"><span class="author">{{ user }}</span></li>
                 </ul>
