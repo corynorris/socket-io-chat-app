@@ -85,7 +85,7 @@ div {
     border: none;
     background-color: #e74c3c;
     color: #FFF;
-    padding: 10px 5px;
+    padding: 10px 15px;
     box-shadow: 0 4px #c0392b;
 }
 
@@ -162,6 +162,7 @@ h2 {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+
 .modal-header h3 {
   margin-top: 0;
   color: #e74c3c;
@@ -192,4 +193,13 @@ h2 {
 .modal-leave .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+@media only screen and (max-width : 480px) {
+    .modal-container {
+        width: 90%;
+    }
+    .modal-container input {
+        width: 100%;
+    }
 }
