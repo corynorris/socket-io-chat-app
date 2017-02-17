@@ -6,3 +6,6 @@ A chat application that uses `socket.io`, `vue.js`, `node.js` and `express`. Fea
 
 `index.js` - All the server code to manage the connected chat clients.  
 `public/js/` - All the client code for connecting to the server and interpreting emmited events.
+
+## Demo
+https://chat.corynorris.me
