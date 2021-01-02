@@ -8,4 +8,4 @@ A chat application that uses `socket.io`, `vue.js`, `node.js` and `express`. Fea
 `public/js/` - All the client code for connecting to the server and interpreting emmited events.
 
 ## Demo
-https://floating-oasis-22896.herokuapp.com/
+https://nameless-beach-65078.herokuapp.com/
