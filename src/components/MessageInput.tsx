@@ -2,11 +2,10 @@ import { useState } from "react";
 import socket from "../socket";
 
 interface MessageInputProps {
-  username: string;
   onSend: (text: string) => void;
 }
 
-export default function MessageInput({ username, onSend }: MessageInputProps) {
+export default function MessageInput({ onSend }: MessageInputProps) {
   const [input, setInput] = useState("");
 
   const handleSend = () => {

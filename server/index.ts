@@ -22,6 +22,10 @@ interface ChatUser {
   username: string;
 }
 
+interface ChatSocket {
+  username?: string;
+}
+
 const users: ChatUser[] = [];
 
 const MAX_USERNAME_LENGTH = 20;
@@ -41,7 +45,7 @@ io.on("connection", (socket) => {
     if (!username) return;
 
     userSet = true;
-    (socket as any).username = username;
+    (socket as unknown as ChatSocket).username = username;
     users.push({ username });
 
     socket.broadcast.emit("user joined", username);
@@ -49,7 +53,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    const username = (socket as any).username;
+    const username = (socket as unknown as ChatSocket).username;
     if (!username) return;
 
     const index = users.findIndex((u) => u.username === username);
@@ -64,7 +68,7 @@ io.on("connection", (socket) => {
     const message = sanitize(rawMessage).slice(0, MAX_MESSAGE_LENGTH);
     if (!message) return;
 
-    const username = (socket as any).username;
+    const username = (socket as unknown as ChatSocket).username;
     if (!username) return;
 
     socket.broadcast.emit("chat message", {

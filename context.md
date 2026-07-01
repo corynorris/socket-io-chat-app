@@ -5,6 +5,7 @@
 A simple real-time chat application. Users land on the page, a modal asks them to pick a username, then they can send messages and see other connected users in a sidebar. Messages are broadcast to all other clients (not echoed back to the sender — that's handled client-side).
 
 **Features:**
+
 - Username selection via modal on join
 - Real-time messaging via WebSocket (Socket.IO)
 - User list showing all connected users (updated live)
@@ -13,15 +14,16 @@ A simple real-time chat application. Users land on the page, a modal asks them t
 
 ## 2. Tech Stack and Key Dependencies
 
-| Component | Technology | Version |
-|-----------|-----------|---------|
-| Runtime | Node.js | (any, uses `var`, no ES modules) |
-| Web framework | Express | `^4.18.2` |
-| WebSocket | Socket.IO | `^4.7.1` |
-| Frontend framework | Vue.js 1.0 | `1.0.16` (CDN — not a package dependency) |
-| Deployment | Heroku (originally) | Demo at `pacific-cliffs-22068.herokuapp.com` |
+| Component          | Technology          | Version                                      |
+| ------------------ | ------------------- | -------------------------------------------- |
+| Runtime            | Node.js             | (any, uses `var`, no ES modules)             |
+| Web framework      | Express             | `^4.18.2`                                    |
+| WebSocket          | Socket.IO           | `^4.7.1`                                     |
+| Frontend framework | Vue.js 1.0          | `1.0.16` (CDN — not a package dependency)    |
+| Deployment         | Heroku (originally) | Demo at `pacific-cliffs-22068.herokuapp.com` |
 
 **Dependency version history:**
+
 - Original: `express@^4.13.4`, `socket.io@^1.4.5`
 - Current: `express@^4.18.2`, `socket.io@^4.7.1`
 - Has received dependabot security bumps: socket.io-parser (3.3.0→3.3.3, 3.4.2→3.4.3), qs (6.7.0→6.11.0)
@@ -49,6 +51,7 @@ socket-io-chat-app/
 ### File-by-file detail:
 
 #### `index.js` (server, 47 lines)
+
 - Creates Express app, wraps it in `http.Server`, attaches Socket.IO
 - Serves static files from `public/`
 - Serves `index.html` on `GET /`
@@ -62,6 +65,7 @@ socket-io-chat-app/
 - **No input validation or sanitization on messages or usernames**
 
 #### `index.html` (client shell, 79 lines)
+
 - Standard HTML5 doctype
 - Vue 1.0 app mounted at `#chat`
 - Contains a `<modal>` Vue component (inline template in `<script type="x/template">`)
@@ -71,6 +75,7 @@ socket-io-chat-app/
 - Includes IE8/9 html5shiv fallback (commented conditional)
 
 #### `public/js/app.js` (client, 83 lines)
+
 - Connects to Socket.IO: `var socket = io()`
 - Registers `modal` Vue component with `#modal-template`
 - Main Vue instance:
@@ -85,6 +90,7 @@ socket-io-chat-app/
   - `user left` — splices username from local list
 
 #### `public/css/app.css` (215 lines)
+
 - Box-sizing reset
 - Full-height layout
 - `.messages-container` (75% width, blue `#3498db`)
@@ -112,7 +118,7 @@ socket-io-chat-app/
 
 2. **No input validation/sanitization on server** — Usernames and messages are accepted as-is and broadcast to all clients. No XSS protection (no escaping on server). The client renders with `{{ }}` (Vue text interpolation), which does HTML-escape, but there's no server-side defense.
 
-3. **Race condition on user list** — `io.on('connection')` emits the current `users` list immediately, but the `join chat` handler may not have fired yet (it fires after the modal submit). The client's `addUser` method optimistically pushes the username to its own `vm.users` *and* emits `join chat`, then the server's `users` event will overwrite with the server's list. This can cause duplicate entries or lost users depending on timing.
+3. **Race condition on user list** — `io.on('connection')` emits the current `users` list immediately, but the `join chat` handler may not have fired yet (it fires after the modal submit). The client's `addUser` method optimistically pushes the username to its own `vm.users` _and_ emits `join chat`, then the server's `users` event will overwrite with the server's list. This can cause duplicate entries or lost users depending on timing.
 
 ### Outdated/Deprecated Patterns:
 

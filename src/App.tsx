@@ -70,7 +70,7 @@ export default function App() {
     <div className="chat-app container">
       <section className={`messages-container ${menuClass}`}>
         <MessageList messages={messages} />
-        <MessageInput username={username} onSend={handleSend} />
+        <MessageInput onSend={handleSend} />
       </section>
       <section
         id="users"
