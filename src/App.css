@@ -90,6 +90,14 @@ div {
   padding: 8px 0;
 }
 
+.no-users {
+  padding: 12px 20px;
+  color: #6C7086;
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 0;
+}
+
 .user-list li {
   padding: 8px 20px;
   display: flex;

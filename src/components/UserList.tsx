@@ -5,13 +5,17 @@ interface UserListProps {
 export default function UserList({ users }: UserListProps) {
   return (
     <footer>
-      <ul className="user-list">
-        {users.map((user, i) => (
-          <li key={i}>
-            <span className="author">{user.username}</span>
-          </li>
-        ))}
-      </ul>
+      {users.length === 0 ? (
+        <p className="no-users">No other users online</p>
+      ) : (
+        <ul className="user-list">
+          {users.map((user, i) => (
+            <li key={i}>
+              <span className="author">{user.username}</span>
+            </li>
+          ))}
+        </ul>
+      )}
     </footer>
   );
 }
