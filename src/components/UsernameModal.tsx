@@ -20,7 +20,8 @@ export default function UsernameModal({ onUsernameSet }: UsernameModalProps) {
       <div className="modal-wrapper">
         <div className="modal-container">
           <div className="modal-header">
-            <h3>Select a User Name</h3>
+            <h3>Welcome to the Chat</h3>
+            <p>Choose a display name to get started</p>
           </div>
           <div className="modal-body">
             <input
