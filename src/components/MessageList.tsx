@@ -7,9 +7,10 @@ interface Message {
 
 interface MessageListProps {
   messages: Message[];
+  currentUsername: string | null;
 }
 
-export default function MessageList({ messages }: MessageListProps) {
+export default function MessageList({ messages, currentUsername }: MessageListProps) {
   const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -21,11 +22,14 @@ export default function MessageList({ messages }: MessageListProps) {
   return (
     <header>
       <ul className="message-list" ref={listRef}>
-        {messages.map((msg, i) => (
-          <li key={i}>
-            <span className="author">{msg.author}</span> {msg.text}
-          </li>
-        ))}
+        {messages.map((msg, i) => {
+          const isMine = msg.author === currentUsername;
+          return (
+            <li key={i} className={isMine ? "message-mine" : ""}>
+              <span className="author">{msg.author}</span> {msg.text}
+            </li>
+          );
+        })}
       </ul>
     </header>
   );
