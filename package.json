@@ -1,40 +1,40 @@
 {
-  "name": "socket-io-chat-app",
-  "version": "2.0.0",
-  "description": "Real-time chat application with Express, Socket.IO, and React",
-  "type": "module",
-  "scripts": {
-    "dev": "concurrently -k \"tsx server/index.ts\" \"vite\"",
-    "build": "vite build && tsc -p tsconfig.server.json",
-    "start": "node dist/server/index.js",
-    "preview": "vite preview",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
-  },
-  "dependencies": {
-    "express": "^4.18.2",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "socket.io": "^4.7.1",
-    "socket.io-client": "^4.8.3"
-  },
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/express": "^4.17.21",
-    "@types/node": "^20.11.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "@vitejs/plugin-react": "^4.2.1",
-    "concurrently": "^8.2.2",
-    "eslint": "^10.6.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.3",
-    "prettier": "^3.9.4",
-    "tsx": "^4.7.0",
-    "typescript": "^5.5.0",
-    "typescript-eslint": "^8.62.1",
-    "vite": "^6.0.0"
-  }
+	"name": "socket-io-chat-app",
+	"version": "2.0.0",
+	"description": "Real-time chat application with Express, Socket.IO, and React",
+	"type": "module",
+	"scripts": {
+		"dev": "concurrently -k \"tsx server/index.ts\" \"vite\"",
+		"build": "vite build && tsc -p tsconfig.server.json",
+		"start": "node dist/server/index.js",
+		"preview": "vite preview",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"lint": "eslint .",
+		"lint:fix": "eslint --fix ."
+	},
+	"dependencies": {
+		"express": "^4.18.2",
+		"react": "^19.2.7",
+		"react-dom": "^19.2.7",
+		"socket.io": "^4.7.1",
+		"socket.io-client": "^4.8.3"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@types/express": "^4.17.21",
+		"@types/node": "^20.11.0",
+		"@types/react": "^19.0.0",
+		"@types/react-dom": "^19.0.0",
+		"@vitejs/plugin-react": "^4.2.1",
+		"concurrently": "^8.2.2",
+		"eslint": "^10.6.0",
+		"eslint-plugin-react-hooks": "^7.1.1",
+		"eslint-plugin-react-refresh": "^0.5.3",
+		"prettier": "^3.9.4",
+		"tsx": "^4.7.0",
+		"typescript": "^5.5.0",
+		"typescript-eslint": "^8.62.1",
+		"vite": "^6.0.0"
+	}
 }
