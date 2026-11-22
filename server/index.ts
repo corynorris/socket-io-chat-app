@@ -14,7 +14,9 @@ const io = new Server(http);
 // Serve built Vite assets in production
 const distPath = path.resolve(__dirname, "../../dist");
 app.use(express.static(distPath));
-app.get("*", (_req, res) => {
+// Express 5 removed the "*" string path pattern; a pathless middleware is the
+// supported SPA fallback.
+app.use((_req, res) => {
 	res.sendFile(path.join(distPath, "index.html"));
 });
 
